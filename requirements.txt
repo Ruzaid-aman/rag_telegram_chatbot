@@ -1,0 +1,12 @@
+watchdog==6.0.0
+torch==2.2.0
+transformers==4.38.0
+sentence-transformers==2.5.0
+faiss-cpu==1.8.0
+rich==13.7.0
+llama-cpp-python==0.2.56
+numpy==1.26.0
+psutil==5.9.8
+readline==6.2.4.1; platform_system != "Windows"
+langchain==0.1.12
+langchain-text-splitters==0.0.1

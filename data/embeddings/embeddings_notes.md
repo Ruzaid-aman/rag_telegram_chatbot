@@ -1,0 +1,1 @@
+# Stored vector embeddings and FAISS index files

@@ -1,0 +1,91 @@
+2025-05-27 00:17:14,955 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:17:14,958 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:17:14,959 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:17:14,959 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:17:14,985 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:17:14,990 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:17:14,991 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:17:54,010 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:17:54,013 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:17:54,014 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:17:54,014 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:17:54,056 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:17:54,069 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:17:54,071 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:17:54,081 - INFO - Loaded index from data/embeddings/faiss_index.idx with 333 vectors
+2025-05-27 00:18:03,666 - ERROR - Error generating query embedding: Vectorizer not fitted. Process some chunks first.
+2025-05-27 00:18:03,667 - ERROR - Error: Vectorizer not fitted. Process some chunks first.
+2025-05-27 00:18:24,154 - ERROR - Error generating query embedding: Vectorizer not fitted. Process some chunks first.
+2025-05-27 00:18:24,155 - ERROR - Error: Vectorizer not fitted. Process some chunks first.
+2025-05-27 00:20:44,858 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:20:44,865 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:20:44,865 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:20:44,866 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:20:44,891 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:20:44,897 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:20:44,897 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:20:44,907 - INFO - Loaded index from data/embeddings/faiss_index.idx with 333 vectors
+2025-05-27 00:20:57,299 - ERROR - Error: 'text'
+2025-05-27 00:21:26,831 - ERROR - Error: 'text'
+2025-05-27 00:21:39,692 - ERROR - Error: 'text'
+2025-05-27 00:23:13,028 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:23:13,031 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:23:13,032 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:23:13,032 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:23:13,057 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:23:13,062 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:23:13,063 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:23:13,070 - INFO - Loaded index from data/embeddings/faiss_index.idx with 340 vectors
+2025-05-27 00:23:30,152 - INFO - Generated response for query: list the user names from group...
+2025-05-27 00:24:11,362 - INFO - Generated response for query: what is the group name...
+2025-05-27 00:24:39,642 - INFO - Generated response for query: what are the list of APIs in the conversation...
+2025-05-27 00:34:33,698 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:34:33,701 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:34:33,701 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:34:33,701 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:34:33,728 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:34:33,733 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:34:33,734 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:34:33,742 - INFO - Loaded index from data/embeddings/faiss_index.idx with 340 vectors
+2025-05-27 00:34:52,367 - INFO - Generated response for query: list the users in the group...
+2025-05-27 00:35:13,444 - INFO - Generated response for query: what is the integration about...
+2025-05-27 00:38:52,830 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:38:52,834 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:38:52,835 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:38:52,835 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:38:52,859 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:38:52,866 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:38:52,866 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:38:53,084 - INFO - Loaded index from data/embeddings/faiss_index.idx with 340 vectors
+2025-05-27 00:39:03,133 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/generate
+2025-05-27 00:39:13,939 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/generate
+2025-05-27 00:39:23,264 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/generate
+2025-05-27 00:53:33,947 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:53:33,950 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:53:33,951 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:53:33,951 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:53:34,015 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:53:34,021 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:53:34,021 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:53:34,338 - INFO - Loaded index from data/embeddings/faiss_index.idx with 340 vectors
+2025-05-27 00:53:51,514 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
+2025-05-27 00:54:05,152 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
+2025-05-27 00:54:09,079 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
+2025-05-27 00:55:41,759 - INFO - Initialized TF-IDF vectorizer with dimension 384
+2025-05-27 00:55:41,762 - INFO - Loading faiss with AVX512 support.
+2025-05-27 00:55:41,763 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2025-05-27 00:55:41,763 - INFO - Loading faiss with AVX2 support.
+2025-05-27 00:55:41,787 - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-27 00:55:41,791 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-27 00:55:41,792 - INFO - Initialized VectorStore with dim=384, index_type=L2
+2025-05-27 00:55:42,010 - INFO - Loaded index from data/embeddings/faiss_index.idx with 340 vectors
+2025-05-27 00:55:51,842 - INFO - Sending request to Ollama API at http://127.0.0.1:11434/api/generate
+2025-05-27 00:55:51,849 - ERROR - Error generating answer with Ollama: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate

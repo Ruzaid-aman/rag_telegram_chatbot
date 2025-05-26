@@ -1,0 +1,27 @@
+rag_telegram_chatbot project structure
+
+rag_telegram_chatbot/
+│
+├── app/                    # Core Python scripts and modules
+│   ├── __init__.py
+│   ├── data_loader.py      # Load and parse Telegram JSON exports
+│   ├── chunker.py          # Chunk messages with metadata
+│   ├── embedder.py         # Generate embeddings locally
+│   ├── vector_store.py     # Manage FAISS or TinyVectorDB index
+│   ├── retriever.py        # Search and retrieve relevant chunks
+│   ├── llm_interface.py    # Interface with local LLM for generation
+│   ├── cli.py              # Command-line interface for chatting
+│   └── monitor.py          # Folder monitoring automation script
+│
+├── data/                   # Store Telegram exports and processed data
+│   ├── raw_exports/        # Place exported Telegram JSON files here
+│   ├── processed_chunks/   # Chunked and metadata-enriched text files
+│   └── embeddings/         # Stored vector embeddings and FAISS index files
+│
+├── models/                 # Downloaded LLM and embedding models
+│
+├── logs/                   # Logs for monitoring and errors
+│
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
+└── run_chatbot.sh          # Optional script to launch the chatbot
