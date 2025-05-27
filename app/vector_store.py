@@ -1,89 +1,61 @@
 # Manage FAISS or TinyVectorDB index
-import faiss
 import numpy as np
 import pickle
-import logging
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple
 from datetime import datetime
+from pathlib import Path
+from tiny_vectordb import VectorDatabase
 from app.embedder import embedder
+from app.logging_config import setup_logging
 
-logging.basicConfig(
-    filename='logs/vector_store.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+logger = setup_logging('vector_store')
 
 class VectorStore:
     def __init__(self, dim: int = 384):
-        """
-        Initialize the vector store with configurable parameters
-        Args:
-            dim: Dimension of the vectors
-        """
+        """Initialize with TinyVectorDB for better memory efficiency"""
         try:
-            self.index = faiss.IndexFlatL2(dim)
+            db_path = Path("data/embeddings/vector_store.db")
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+            self.db = VectorDatabase(vector_size=dim, database_path=str(db_path))
             self.metadata = {}
-            self.next_id = 0
-            logging.info(f"Initialized VectorStore with dim={dim}, index_type=L2")
+            logger.info(f"Initialized VectorStore with dim={dim}")
         except Exception as e:
-            logging.error(f"Failed to initialize VectorStore: {str(e)}")
+            logger.error(f"Failed to initialize VectorStore: {str(e)}")
             raise
 
     def add_vectors(self, vectors: np.ndarray, chunks: List[Dict]):
-        """
-        Add vectors to the index in batches
-        """
+        """Add vectors with optimized batch insertion"""
         try:
-            # Add vectors to the index
-            self.index.add(vectors)
-            
-            # Store metadata
-            for i, chunk in enumerate(chunks):
+            for i, (vector, chunk) in enumerate(zip(vectors, chunks)):
+                vector_id = self.db.insert(vector.tolist())
                 chunk['metadata'].update({
-                    'vector_id': self.next_id + i,
+                    'vector_id': vector_id,
                     'indexed_at': datetime.now().isoformat()
                 })
-                self.metadata[self.next_id + i] = chunk['metadata']
+                self.metadata[vector_id] = chunk['metadata']
             
-            logging.info(f"Added batch of {len(vectors)} vectors. Total vectors: {self.next_id + len(vectors)}")
-            self.next_id += len(vectors)
+            logger.info(f"Added batch of {len(vectors)} vectors")
             
         except Exception as e:
-            logging.error(f"Error adding vectors to index: {str(e)}")
+            logger.error(f"Error adding vectors to index: {str(e)}")
             raise
 
     def similarity_search(self, query_vector: np.ndarray, k: int = 5) -> List[Tuple[Dict, float]]:
-        """
-        Perform similarity search with configurable parameters
-        """
+        """Perform similarity search with TinyVectorDB's optimized algorithm"""
         try:
-            D, I = self.index.search(np.array([query_vector]), k)
-            results = []
-            
-            for idx, dist in zip(I[0], D[0]):
-                if idx == -1:
-                    continue
-                results.append((self.metadata.get(idx, {}), float(dist)))
-            
-            return results
-            
+            results = self.db.query(query_vector.tolist(), k=k)
+            return [(self.metadata.get(vid, {}), score) for vid, score in results]
         except Exception as e:
-            logging.error(f"Error performing similarity search: {str(e)}")
+            logger.error(f"Error performing similarity search: {str(e)}")
             raise
 
     def save_index(self, path: str):
-        """
-        Save the index and metadata to disk
-        """
+        """Save metadata (TinyVectorDB handles its own persistence)"""
         try:
-            # Save FAISS index
-            faiss.write_index(self.index, path)
-            
-            # Save metadata and embedder state
-            with open(f"{path}.meta", "wb") as f:
+            meta_path = Path(path).with_suffix('.meta')
+            with meta_path.open('wb') as f:
                 pickle.dump({
                     'metadata': self.metadata,
-                    'next_id': self.next_id,
                     'vectorizer_state': {
                         'vectorizer': embedder.vectorizer,
                         'svd': embedder.svd,
@@ -91,24 +63,18 @@ class VectorStore:
                         'svd_fitted': hasattr(embedder, 'svd_fitted')
                     }
                 }, f)
-            logging.info(f"Saved index to {path} with {self.next_id} vectors")
+            logger.info(f"Saved metadata to {meta_path}")
         except Exception as e:
-            logging.error(f"Error saving index to {path}: {str(e)}")
+            logger.error(f"Error saving metadata: {str(e)}")
             raise
 
     def load_index(self, path: str):
-        """
-        Load the index and metadata from disk
-        """
+        """Load metadata (TinyVectorDB handles its own persistence)"""
         try:
-            # Load FAISS index
-            self.index = faiss.read_index(path)
-            
-            # Load metadata and embedder state
-            with open(f"{path}.meta", "rb") as f:
+            meta_path = Path(path).with_suffix('.meta')
+            with meta_path.open('rb') as f:
                 data = pickle.load(f)
                 self.metadata = data['metadata']
-                self.next_id = data['next_id']
                 
                 # Restore embedder state
                 vectorizer_state = data['vectorizer_state']
@@ -117,11 +83,11 @@ class VectorStore:
                 embedder.fitted = vectorizer_state['fitted']
                 if vectorizer_state['svd_fitted']:
                     embedder.svd_fitted = True
-                    
-            logging.info(f"Loaded index from {path} with {self.next_id} vectors")
+            
+            logger.info(f"Loaded metadata from {meta_path}")
         except Exception as e:
-            logging.error(f"Error loading index from {path}: {str(e)}")
+            logger.error(f"Error loading metadata: {str(e)}")
             raise
 
-# Create a singleton instance
+# Create singleton instance
 vector_store = VectorStore()
